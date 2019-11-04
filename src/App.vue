@@ -1,15 +1,17 @@
 <template>
-  <div class="col-md-8 col-md-offset-2">
+  <center><div class="col-md-8 col-md-offset-2 tables">
         <div id="people">
-            <v-client-table :data="tableData" :columns="columns">
-                <template slot="edit" slot-scope="props">
-                   <div>
-                        <a class="fa fa-edit" :href="edit(props.row.id)">thing</a>
-                    </div>
-                </template>
+        <!--    <v-client-table :data="tableData" :columns="columns"> -->
+                <v-client-table :data="startData" :columns="columns">
+               <!--    <template slot="edit" slot-scope="props">
+                <center><div>
+                        <a class="fa fa-edit" :href="edit(props.row.id)">Multi-Line Facebook Ad Campaign</a>
+                    </div></center> 
+                </template> -->
             </v-client-table>
         </div>
-    </div>
+    <!--    DEBUG: {{startData}} -->
+    </div></center>
 </template>
 
 <script>
@@ -18,7 +20,7 @@
     import axios from 'axios';
 
     Vue.use(ClientTable, {
-        perPage: 3
+        perPage: 5
     }, false);
 
 export default {
@@ -29,7 +31,7 @@ export default {
   },//end methods
           data() {
             return {
-                columns: ['edit', 'id','name','age'],
+                columns: ['Multiline Facebook Ads', 'timestamp','campaign','medium','source'],
                 tableData: [
                     {id:1, name:"John",age:"20"},
                     {id:2, name:"Jane",age:"24"},
@@ -38,7 +40,15 @@ export default {
                     {id:5, name:"Dan",age:"40"}
                 ]
             };
-        }//end data
+        },//end data
+        computed: {
+        startData() {
+            return this.$store.state.startData;
+        }
+        },//end computed
+        created() {
+            this.$store.dispatch('getData');
+        } //end created  */
 }//end default
 </script>
 
@@ -50,9 +60,22 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  padding: 1em
 }
 
 .VuePagination__count {
-    display:none;
+    /*display:none; */
+    color: blue;
 }
+
+.people {
+    background: #aaa;
+    padding: 1em;
+}
+
+.tables {
+    margin-top: 2em;
+}
+
+
 </style>

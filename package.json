@@ -12,7 +12,8 @@
     "core-js": "^3.3.2",
     "font-awesome": "^4.7.0",
     "vue": "^2.6.10",
-    "vue-tables-2": "^1.4.92"
+    "vue-tables-2": "^1.4.92",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
