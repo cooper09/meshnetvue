@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     dataURL:'https://sleepy-everglades-99189.herokuapp.com/multiline_facebook_conversions',
+    contactsURL: "https://sleepy-everglades-99189.herokuapp.com/multilines",
     startData: [],
   },//end state
   mutations: {
@@ -14,6 +15,10 @@ export default new Vuex.Store({
       state.startData = payload;
       //console.log('Store.setData data: '+ state.startData );
     },//end setData
+    setContactData(state, payload) {
+      state.contactData = payload;
+      //console.log('Store.setData data: '+ state.startData );
+    }
   },//end mutations
   actions: {
     async getData({ state, commit }) {
@@ -25,6 +30,16 @@ export default new Vuex.Store({
       } catch (error) {
           alert('Data Load error: ' + error);
       }
-    }//end getData
+    },//end getData
+    async getContacts({ state, commit }) {
+      //alert("Store.getData: ");
+      try {
+          let response = await axios.get(`${state.contactsURL}`);
+          console.log("store - contactData:  ", response.data );
+          commit('setContactData', response.data);
+      } catch (error) {
+          alert('setContactData - Data Load error: ' + error);
+      }
+    }
   }// end actions
 })//end export
