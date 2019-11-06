@@ -9,6 +9,7 @@ export default new Vuex.Store({
     dataURL:'https://sleepy-everglades-99189.herokuapp.com/multiline_facebook_conversions',
     contactsURL: "https://sleepy-everglades-99189.herokuapp.com/multilines",
     startData: [],
+    contactData: []
   },//end state
   mutations: {
     setData(state, payload) {
@@ -32,7 +33,7 @@ export default new Vuex.Store({
       }
     },//end getData
     async getContacts({ state, commit }) {
-      //alert("Store.getData: ");
+      //alert("Store.getContacts: ");
       try {
           let response = await axios.get(`${state.contactsURL}`);
           console.log("store - contactData:  ", response.data );

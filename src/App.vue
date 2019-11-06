@@ -3,14 +3,18 @@
         <div id="people">
         <!--    <v-client-table :data="tableData" :columns="columns"> -->
                 <v-client-table :data="startData" :columns="columns">
-               <!--    <template slot="edit" slot-scope="props">
-                <center><div>
-                        <a class="fa fa-edit" :href="edit(props.row.id)">Multi-Line Facebook Ad Campaign</a>
-                    </div></center> 
-                </template> -->
-            </v-client-table>
+                <!--    <template slot="edit" slot-scope="props">
+                    <center><div>
+                            <a class="fa fa-edit" :href="edit(props.row.id)">Multi-Line Facebook Ad Campaign</a>
+                        </div></center> 
+                    </template> -->
+                </v-client-table>
+                <hr>
+                <v-client-table :data="contactData" :columns="contacts">
+                    <!-- what interesting things go here...? -->
+                </v-client-table>
         </div>
-    <!--    DEBUG: {{startData}} -->
+    <!--    DEBUG: {{contactData}} -->
     </div></center>
 </template>
 
@@ -20,7 +24,7 @@
     import axios from 'axios';
 
     Vue.use(ClientTable, {
-        perPage: 5
+        perPage: 3
     }, false);
 
 export default {
@@ -32,6 +36,7 @@ export default {
           data() {
             return {
                 columns: ['Multiline Facebook Ads', 'timestamp','campaign','medium','source'],
+                contacts: ['Defensive Driver Instructor leads', 'timestamp','firstname','lastname','phone','email'],
                 tableData: [
                     {id:1, name:"John",age:"20"},
                     {id:2, name:"Jane",age:"24"},
@@ -42,12 +47,16 @@ export default {
             };
         },//end data
         computed: {
-        startData() {
-            return this.$store.state.startData;
-        }
+            startData() {
+                return this.$store.state.startData;
+            },
+            contactData() {
+                return this.$store.state.contactData;
+            }
         },//end computed
         created() {
             this.$store.dispatch('getData');
+            this.$store.dispatch('getContacts');
         } //end created  */
 }//end default
 </script>
