@@ -9,6 +9,7 @@
                         </div></center> 
                     </template> -->
                 </v-client-table>
+                <HelloWorld />
                 <hr>
                 <v-client-table :data="contactData" :columns="contacts">
                     <!-- what interesting things go here...? -->
@@ -23,11 +24,16 @@
     import Vue from 'vue';
     import axios from 'axios';
 
+    import HelloWorld from './components/HelloWorld';
+
     Vue.use(ClientTable, {
         perPage: 3
     }, false);
 
 export default {
+  components: {
+      HelloWorld
+  },
   methods: {
     edit: function(id){
 	    return "#"
