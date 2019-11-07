@@ -42,5 +42,10 @@ export default new Vuex.Store({
           alert('setContactData - Data Load error: ' + error);
       }
     }
-  }// end actions
+  },// end actions
+  getters: {
+    chartData (state) {
+      return state.startData;
+    }
+  }
 })//end export

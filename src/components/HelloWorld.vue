@@ -13,10 +13,10 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      labels: ["apples","peaches", "pumpkin pie"],
+      labels: ["NYC","Buffalo", "Syracuse","Albany","Rochester","Utica","Mount Vernon","Schenectady","New Rochelle","Yonkers"],
       datasets: [
         {
-          data: [20,30,50],
+          data: this.$store.getters.chartData,
           backgroundColor: ["Red","Yellow","Purple"]
         }
       ],
@@ -24,11 +24,16 @@ export default {
         title: {
           display: true,
           position: "bottom", 
-          text: "Fruits"
+          text: "New York Metropolitan Regions"
         }//end title
       }//end option
     };//end return
-  }//end data
+  },//end data
+  computed: {
+    startData() {
+                return this.$store.state.startData;
+            }
+        },//end computed
 }//end export default
 </script>
 

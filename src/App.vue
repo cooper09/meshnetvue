@@ -9,7 +9,7 @@
                         </div></center> 
                     </template> -->
                 </v-client-table>
-                <HelloWorld />
+                <HelloWorld v-bind:startData="startData"/>
                 <hr>
                 <v-client-table :data="contactData" :columns="contacts">
                     <!-- what interesting things go here...? -->
