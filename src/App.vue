@@ -29,7 +29,7 @@ export default {
   },//end methods
           data() {
             return {
-                columns: ['edit', 'id','name','age'],
+                columns: ['edit', 'id','name','age', 'campaign'],
                 tableData: [
                     {id:1, name:"John",age:"20"},
                     {id:2, name:"Jane",age:"24"},
