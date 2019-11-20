@@ -36,7 +36,7 @@ export default {
           data() {
             return {
                 columns: ['Multiline Facebook Ads', 'timestamp','campaign','medium','source'],
-                contacts: ['Defensive Driver Instructor leads', 'timestamp','firstname','lastname','phone','email'],
+                contacts: ['Defensive Driver Instructor leads', 'timestamp','firstname','lastname','phone','email', 'campaign'],
                 tableData: [
                     {id:1, name:"John",age:"20"},
                     {id:2, name:"Jane",age:"24"},
