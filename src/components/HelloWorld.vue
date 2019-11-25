@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
-    Chart goes here...
+ 
     <chartjs-doughnut v-bind:labels="labels"
-      v-bind:datasets="datasets"
+      v-bind:datasets="datasets.campaign"
       v-bind:option="option"
     ></chartjs-doughnut>
   </div>
@@ -13,18 +13,19 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      labels: ["NYC","Buffalo", "Syracuse","Albany","Rochester","Utica","Mount Vernon","Schenectady","New Rochelle","Yonkers"],
+      //labels: ["NYC","Buffalo", "Syracuse","Albany","Rochester","Utica","Mount Vernon","Schenectady","New Rochelle","Yonkers"],
+      labels: ["NYC","Buffalo", "Syracuse","Albany"],
       datasets: [
         {
           data: this.$store.getters.chartData,
-          backgroundColor: ["Red","Yellow","Purple"]
+          backgroundColor: ["Red","Yellow","Purple","Green", "Orange"]
         }
       ],
       option:{
         title: {
           display: true,
           position: "bottom", 
-          text: "New York Metropolitan Regions"
+          text: "Top New York Metropolitan Responses by Regions"
         }//end title
       }//end option
     };//end return

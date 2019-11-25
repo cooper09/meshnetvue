@@ -13,6 +13,7 @@ export default new Vuex.Store({
   },//end state
   mutations: {
     setData(state, payload) {
+      
       state.startData = payload;
       //console.log('Store.setData data: '+ state.startData );
     },//end setData
