@@ -1,15 +1,22 @@
 <template>
-  <div class="col-md-8 col-md-offset-2">
+  <center><div class="col-md-8 col-md-offset-2 tables">
         <div id="people">
-            <v-client-table :data="tableData" :columns="columns">
-                <template slot="edit" slot-scope="props">
-                   <div>
-                        <a class="fa fa-edit" :href="edit(props.row.id)">thing</a>
-                    </div>
-                </template>
-            </v-client-table>
+        <!--    <v-client-table :data="tableData" :columns="columns"> -->
+                <v-client-table :data="startData" :columns="columns">
+                <!--    <template slot="edit" slot-scope="props">
+                    <center><div>
+                            <a class="fa fa-edit" :href="edit(props.row.id)">Multi-Line Facebook Ad Campaign</a>
+                        </div></center> 
+                    </template> -->
+                </v-client-table>
+                <HelloWorld v-bind:startData="startData"/>
+                <hr>
+                <v-client-table :data="contactData" :columns="contacts">
+                    <!-- what interesting things go here...? -->
+                </v-client-table>
         </div>
-    </div>
+    <!--    DEBUG: {{contactData}} -->
+    </div></center>
 </template>
 
 <script>
@@ -17,11 +24,16 @@
     import Vue from 'vue';
     import axios from 'axios';
 
+    import HelloWorld from './components/HelloWorld';
+
     Vue.use(ClientTable, {
         perPage: 3
     }, false);
 
 export default {
+  components: {
+      HelloWorld
+  },
   methods: {
     edit: function(id){
 	    return "#"
@@ -29,7 +41,9 @@ export default {
   },//end methods
           data() {
             return {
-                columns: ['edit', 'id','name','age', 'campaign'],
+
+                columns: ['Multiline Facebook Ads', 'timestamp','campaign','medium','source'],
+                contacts: ['Defensive Driver Instructor leads', 'timestamp','firstname','lastname','phone','email'],
                 tableData: [
                     {id:1, name:"John",age:"20"},
                     {id:2, name:"Jane",age:"24"},
@@ -38,7 +52,19 @@ export default {
                     {id:5, name:"Dan",age:"40"}
                 ]
             };
-        }//end data
+        },//end data
+        computed: {
+            startData() {
+                return this.$store.state.startData;
+            },
+            contactData() {
+                return this.$store.state.contactData;
+            }
+        },//end computed
+        created() {
+            this.$store.dispatch('getData');
+            this.$store.dispatch('getContacts');
+        } //end created  */
 }//end default
 </script>
 
@@ -50,9 +76,22 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  padding: 1em
 }
 
 .VuePagination__count {
-    display:none;
+    /*display:none; */
+    color: blue;
 }
+
+.people {
+    background: #aaa;
+    padding: 1em;
+}
+
+.tables {
+    margin-top: 2em;
+}
+
+
 </style>
